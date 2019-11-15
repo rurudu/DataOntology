@@ -1,22 +1,41 @@
 {
-  "name": "app",
-  "version": "0.1.0",
+  "name": "data-ontology-tool",
+  "description": "Data Ontology Tool",
+  "author": "MasterBranch",
+  "version": "0.0.1",
   "private": true,
-  "devDependencies": {
-    "electron": "^1.4.14",
-    "react-scripts": "0.8.5"
-  },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "cross-env": "6.0.2",
+    "electron-is-dev": "1.1.0",
+    "electron-log": "^3.0.8",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "update-electron-app": "^1.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "4.1.2",
+    "electron": "6.0.11",
+    "electron-builder": "^21.2.0",
+    "prettier": "^1.4.4",
+    "react-scripts": "3.1.2",
+    "wait-on": "3.3.0"
+  },
+  "build": {
+    "publish": {
+      "provider": "github"
+    }
   },
   "main": "src/main.js",
+  "homepage": "./",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "electron": "electron ."
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "browserslist": {
     "production": [
