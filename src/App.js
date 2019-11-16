@@ -7,6 +7,14 @@ const {app} = window.require('electron').remote;
 function App() {
   return (
     <div className="App">
+      <header className="ToolBar-header">
+        <button className="Merge-button" type="button">
+          Merge
+        </button>
+        <button className="AutoMerge-button" type="button">
+          Auto-Merge
+        </button>
+      </header>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
