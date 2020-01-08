@@ -1,36 +1,54 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import theme from './Theme'
+import { ThemeProvider } from '@material-ui/core/styles';
+//import TopBar from './components/TopBar';
+import Table from './components/MaterialTable';
 
-const {app} = window.require('electron').remote;
+/*
+> TODO <
+  - Design and implement all components
+    - Merge Bar
+    - Merge Button
+    - Auto-Merge Button
+    - Search Bar
+    - The workspace
+    - Colum label fields
+    - Label fields
+    - Pop-ups
+    - Merge Comfirmation
+  - File loading capability
+  - File parsed and displayed for each column under the corresponding column
+  - Merge capability
+  - Pop-up displayed, inputs work
+*/
 
-function App() {
+/*
+> HIERARCHY <
+  - App
+    - TopBar
+    - Workspace
+      - WorkspaceRow
+*/
+
+export default function App() {
   return (
     <div className="App">
-      <header className="ToolBar-header">
-        <button className="Merge-button" type="button">
-          Merge
-        </button>
-        <button className="AutoMerge-button" type="button">
-          Auto-Merge
-        </button>
-      </header>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme}>
+        <Table />
+      </ThemeProvider>
     </div>
-  );
-}
-
-export default App;
+    )
+  }
+  
+  // class App extends Component {
+  //   render() {
+  //     return (
+  //       <div className="App">
+  //         <TopBar />
+  //       </div>
+  //     )
+  //   }
+  // }
+  
+  // export default App;
+  
