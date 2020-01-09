@@ -156,34 +156,7 @@ const template = [
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 
-function readFile(filepath) { 
-  fs.readFile(filepath, 'utf-8', (err, data) => { 
-     
-     if(err){ 
-        alert("An error ocurred reading the file :" + err.message) 
-        return 
-     } 
-     
-     // handle the file content 
-     event.sender.send('fileData', data) 
-  }) 
-} 
-
-/* This is just for the demo. Remove this
-and uncomment the line below afterwards */
-app.on('ready', thingy)
-function thingy(){
-  const {dialog} = require('electron')
-          dialog.showOpenDialog({
-              properties: ['openFile', 'multiSelections']
-            }, function (files) {
-              if (files !== undefined) {
-                createWindow()
-              }
-          });
-}
-
-// app.on("ready", createWindow)  **DON'T DELETE**
+app.on("ready", createWindow)
 
 
 app.on("window-all-closed", () => {
