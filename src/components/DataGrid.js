@@ -25,10 +25,10 @@ class DataGrid extends Component {
         { ont_label: 'null', file_label: 'tp_spd' },
         { ont_label: 'null', file_label: 'heading' },
         { ont_label: 'null', file_label: 'v_acc' },
-        { ont_label: 'null', file_label: 'pit' },
-        { ont_label: 'null', file_label: 'temp' },
+        { ont_label: 'null', file_label: 'pitch' },
+        { ont_label: 'null', file_label: 'temperature' },
         { ont_label: 'null', file_label: 'grav_frce' },
-        { ont_label: 'null', file_label: 'vel' },
+        { ont_label: 'null', file_label: 'pressure' },
         { ont_label: 'null', file_label: 'hr' },
         { ont_label: 'null', file_label: 'min' },
         { ont_label: 'null', file_label: 'sec' }
