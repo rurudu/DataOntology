@@ -10,7 +10,11 @@ class DataGrid extends Component {
     super(props);
     this.state = {
       columnDefs: [
-        { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true },
+        { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true,
+          cellEditor: "agSelectCellEditor", cellEditorParams: {
+            values: ['null', 'altitude', 'pressure', 'velocity', 'average speed']
+          }
+        },
         { headerName: "File Label", field: "file_label", sortable: true, filter: true }
       ],
       rowSelection: 'multiple',
