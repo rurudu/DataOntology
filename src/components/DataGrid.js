@@ -17,7 +17,7 @@ class DataGrid extends Component {
         },
         { headerName: "File Label", field: "file_label", sortable: true, filter: true }
       ],
-      rowSelection: 'multiple',
+      rowSelection: 'multiple', rowDeselection:'true',
       rowData: [
         { ont_label: 'null', file_label: 'p_alt' },
         { ont_label: 'null', file_label: 'air_pressure' },
