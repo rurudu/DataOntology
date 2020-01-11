@@ -13,6 +13,7 @@ class DataGrid extends Component {
         { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true },
         { headerName: "File Label", field: "file_label", sortable: true, filter: true }
       ],
+      rowSelection: 'multiple',
       rowData: [
         { ont_label: 'null', file_label: 'p_alt' },
         { ont_label: 'null', file_label: 'air_pressure' },
