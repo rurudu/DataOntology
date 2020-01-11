@@ -42,7 +42,8 @@ class DataGrid extends Component {
       >
         <AgGridReact
           columnDefs={this.state.columnDefs}
-          rowData={this.state.rowData}>
+          rowData={this.state.rowData}
+          rowSelection={this.state.rowSelection}>
         </AgGridReact>
       </div>
     );
