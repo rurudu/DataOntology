@@ -21,10 +21,9 @@
   color: #09d3ac;
 }
 
-.Merge-button {
-
-}
-
-.AutoMerge-button {
-  
+.Workspace {
+  position: absolute;
+  top: 50px;
+  bottom: 0px;
+  width: 100%; 
 }

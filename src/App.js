@@ -1,8 +1,12 @@
 import React from 'react';
 import theme from './Theme'
+import "./App.css";
 import { ThemeProvider } from '@material-ui/core/styles';
 //import TopBar from './components/TopBar';
-import Table from './components/MaterialTable';
+//import Table from './components/MaterialTable';
+
+//import Table from './components/DataGridOld';
+import DataGrid from './components/DataGrid';
 
 /*
 > TODO <
@@ -34,7 +38,10 @@ export default function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Table />
+        <div class="Workspace">
+          <div class="RibbonGoesHere"></div>
+          <DataGrid />
+        </div>
       </ThemeProvider>
     </div>
     )
