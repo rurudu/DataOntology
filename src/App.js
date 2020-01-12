@@ -3,10 +3,13 @@ import theme from './Theme'
 import "./App.css";
 import { ThemeProvider } from '@material-ui/core/styles';
 //import TopBar from './components/TopBar';
-//import Table from './components/MaterialTable';
+
 
 //import Table from './components/DataGridOld';
 import DataGrid from './components/DataGrid';
+import { doc } from 'prettier';
+import { Grid } from 'ag-grid-community';
+import {$} from 'jquery';
 
 /*
 > TODO <
@@ -35,16 +38,38 @@ import DataGrid from './components/DataGrid';
 */
 
 export default function App() {
+  function click(){
+    var button = document.getElementById('b')
+    var c = document.getElementById("commands")
+    var ws = document.getElementById("")
+    c.style.display = 'none'
+    button.style.display = 'none'
+    
+    var data_grid = document.getElementsByClassName("DataGrid")
+    var obj = new DataGrid();
+   
+   
+   
+   obj.setHeight();
+  
+   
+
+
+  }
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <div class="Workspace">
+        <div class="Workspace" id = "ws">
           <div class="RibbonGoesHere"></div>
-          <DataGrid />
+          <DataGrid/>
+          <div id="commands" aligned = 'center'>Commands to be added!</div>
+          <button id = 'b' onClick={click}>next</button>
+       
         </div>
       </ThemeProvider>
     </div>
-    )
+    
+    );
   }
   
   // class App extends Component {

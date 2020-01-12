@@ -34,14 +34,20 @@ class DataGrid extends Component {
         { ont_label: 'null', file_label: 'sec' }
       ]
     }
+
+    
+    
+  
   }
 
+  
   render() {
+    
     return (
-      <div
+      <div id="g"
         className="ag-theme-balham-dark"
         style={{
-          height: '100%'
+          height: '0%'
         }}
       >
         <AgGridReact
@@ -52,6 +58,15 @@ class DataGrid extends Component {
       </div>
     );
   }
+
+ setHeight() {
+
+    document.getElementById("g").style.height='100%'   
+ }
+  
+  
+  
+
 }
 
 export default DataGrid;
