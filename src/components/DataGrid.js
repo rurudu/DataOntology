@@ -9,21 +9,36 @@ class DataGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      
       columnDefs: [
         { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true,
           cellEditor: "agSelectCellEditor", cellEditorParams: {
             values: ['null', 'altitude', 'pressure', 'velocity', 'average speed']
           },
+          // cellRendererParams: {
+          //   checkbox: true
+          // },
+          headerCheckboxSelection: true,
+        },
+        { headerName: "File Label", field: "file_label", sortable: true, filter: true, 
+          // cellRendererParams: {
+          //   checkbox: true
+          // },
+          headerCheckboxSelection: true,
+        }
+      ],
+      icons: {
+        checkboxChecked: '<i class="far fa-check-square"/>',
+        checkboxUnchecked: '<i class="far fa-square"/>'
+      },
+      rowSelection: 'multiple', headerCheckboxSelection: true,
+
+      rowData: [
+        { ont_label: 'null', file_label: 'p_alt',          
           cellRendererParams: {
             checkbox: true
           },
-          headerCheckboxSelection: true,
-        },
-        { headerName: "File Label", field: "file_label", sortable: true, filter: true }
-      ],
-      
-      rowData: [
-        { ont_label: 'null', file_label: 'p_alt'},
+        headerCheckboxSelection: true},
         { ont_label: 'null', file_label: 'air_pressure' },
         { ont_label: 'null', file_label: 'av_spd' },
         { ont_label: 'null', file_label: 'tp_spd' },
