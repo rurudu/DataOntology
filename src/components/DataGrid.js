@@ -13,12 +13,17 @@ class DataGrid extends Component {
         { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true,
           cellEditor: "agSelectCellEditor", cellEditorParams: {
             values: ['null', 'altitude', 'pressure', 'velocity', 'average speed']
-          }
+          },
+          cellRendererParams: {
+            checkbox: true
+          },
+          headerCheckboxSelection: true,
         },
         { headerName: "File Label", field: "file_label", sortable: true, filter: true }
       ],
+      
       rowData: [
-        { ont_label: 'null', file_label: 'p_alt' },
+        { ont_label: 'null', file_label: 'p_alt'},
         { ont_label: 'null', file_label: 'air_pressure' },
         { ont_label: 'null', file_label: 'av_spd' },
         { ont_label: 'null', file_label: 'tp_spd' },
