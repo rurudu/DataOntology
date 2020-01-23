@@ -9,7 +9,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import DataGrid from './components/DataGrid';
 import { doc } from 'prettier';
 import { Grid } from 'ag-grid-community';
-import {$} from 'jquery';
 
 /*
 > TODO <
