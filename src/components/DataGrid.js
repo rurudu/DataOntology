@@ -9,9 +9,10 @@ class DataGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      rowSelection: 'multiple',
       columnDefs: [
         { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true,
-          cellEditor: "agSelectCellEditor", cellEditorParams: {
+          checkboxSelection: true, cellEditor: "agSelectCellEditor", cellEditorParams: {
             values: ['null', 'altitude', 'pressure', 'velocity', 'average speed']
           }
         },
