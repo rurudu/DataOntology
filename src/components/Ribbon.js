@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from './Button.css';
+import ribbon from './Ribbon.css';
 
 class Ribbon extends Component {
 	constructor(props) {
@@ -12,8 +12,8 @@ class Ribbon extends Component {
 	render() {
 		return (
 			<div>
-				<button class="Button btn">Merge Labels</button>
-				<button class="Button btn"> New Label</button>
+				<button class="ribbon btn">Merge Labels</button>
+				<button class="ribbon btn"> New Label</button>
 			</div>
 		);
 	}

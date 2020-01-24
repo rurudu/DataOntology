@@ -1,4 +1,5 @@
 .btn {
+    grid-column: 1 / -1;
     background-color: DodgerBlue;
     border: none;
     color: white;
