@@ -37,6 +37,7 @@ import Ribbon from './components/Ribbon';
 */
 
 export default function App() {
+  
   return (
     <div className="App" >
       <ThemeProvider theme={theme}>
@@ -52,8 +53,7 @@ export default function App() {
         </div>
       </ThemeProvider>
     </div>
-    
-    
+
     );
   }
   
