@@ -72,7 +72,11 @@ const template = [
         type: 'separator'
       },
       {
-        label: 'Exit'
+        label: 'Exit',
+        click: () => {
+          mainWindow.close();
+       }
+        
       },
     ]
   },

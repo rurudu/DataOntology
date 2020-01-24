@@ -61,11 +61,8 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <div class="Workspace" id = "ws" >
           <div class="RibbonGoesHere"></div>
-         
-          {/* <body bgcolor="#E6E6FA"> */}
-          <DataGrid/>
 
-          {/* </body> */}
+          <DataGrid/>
           <div id="commands" aligned = 'center'  ><font color="gray">Commands to be added!</font></div>
           <button id = 'b' onClick={click}>next</button>
        
