@@ -12,7 +12,7 @@ class DataGrid extends Component {
       rowSelection: 'multiple',
       columnDefs: [
         { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true,
-          checkboxSelection: true, cellEditor: "agSelectCellEditor", cellEditorParams: {
+          checkboxSelection: true, headerCheckboxSelection: true, cellEditor: "agSelectCellEditor", cellEditorParams: {
             values: ['null', 'altitude', 'pressure', 'velocity', 'average speed']
           }
         },
