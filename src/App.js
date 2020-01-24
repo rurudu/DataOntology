@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 //import Table from './components/DataGridOld';
 import DataGrid from './components/DataGrid';
+import ForceGraph from './components/ForceGraph';
 import Ribbon from './components/Ribbon';
 
 /*
@@ -36,6 +37,7 @@ import Ribbon from './components/Ribbon';
 */
 
 export default function App() {
+  
   return (
     <div className="App" >
       <ThemeProvider theme={theme}>
@@ -47,12 +49,11 @@ export default function App() {
           <div class="Workspace">
             <DataGrid />
           </div>
-          <div>TEMP 4</div>
+          <ForceGraph/>
         </div>
       </ThemeProvider>
     </div>
-    
-    
+
     );
   }
   
