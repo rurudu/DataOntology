@@ -2,7 +2,8 @@ import React from 'react';
 import theme from './Theme'
 import "./App.css";
 import { ThemeProvider } from '@material-ui/core/styles';
-//import Table from './components/MaterialTable';
+//import TopBar from './components/TopBar';
+
 
 //import Table from './components/DataGridOld';
 import DataGrid from './components/DataGrid';
@@ -36,7 +37,7 @@ import Ribbon from './components/Ribbon';
 
 export default function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <ThemeProvider theme={theme}>
         <div class="grid">
           <div class="Ribbon">
@@ -50,7 +51,9 @@ export default function App() {
         </div>
       </ThemeProvider>
     </div>
-    )
+    
+    
+    );
   }
   
   // class App extends Component {
