@@ -21,9 +21,20 @@
   color: #09d3ac;
 }
 
+.grid {
+  display: grid;
+  grid-template-rows: 10vh 90vh;
+  grid-template-columns: 1fr 1fr;
+  background-color: #282c34;
+  height: 100%;
+  justify-items: start;
+  justify-content: center;
+  min-height: 300px;
+  min-width: 300px;
+}
+
 .Workspace {
-  position: absolute;
-  top: 50px;
-  bottom: 0px;
-  width: 100%; 
+  border: none;
+  min-width: 100%;
+  min-height: 80px;
 }

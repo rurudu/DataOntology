@@ -32,7 +32,11 @@ class DataGrid extends Component {
         { ont_label: 'null', file_label: 'hr' },
         { ont_label: 'null', file_label: 'min' },
         { ont_label: 'null', file_label: 'sec' }
-      ]
+      ],
+      style: {
+        width: '100%',
+        height: '100%'
+      }
     }
   }
 
@@ -41,7 +45,7 @@ class DataGrid extends Component {
       <div
         className="ag-theme-balham-dark"
         style={{
-          height: '100%'
+          height: '100%',
         }}
       >
         <AgGridReact
