@@ -11,13 +11,27 @@ class DataGrid extends Component {
     this.state = {
       rowSelection: 'multiple',
       columnDefs: [
-        { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true,
+        { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true, 
           checkboxSelection: true, headerCheckboxSelection: true, cellEditor: "agSelectCellEditor", cellEditorParams: {
             values: ['null', 'altitude', 'pressure', 'velocity', 'average speed']
           }
         },
         { headerName: "File Label", field: "file_label", sortable: true, filter: true }
       ],
+      // allows copy / paste using cell ranges
+      enableRangeSelection: true,
+
+      // enables the fill handle
+      enableFillHandle: true,
+
+      // enables undo / redo
+      undoRedoCellEditing: true,
+
+      // restricts the number of undo / redo steps to 5
+      undoRedoCellEditingLimit: 5,
+
+      // enables flashing to help see cell changes
+      enableCellChangeFlash: true,
       rowData: [
         { ont_label: 'null', file_label: 'p_alt' },
         { ont_label: 'null', file_label: 'air_pressure' },
@@ -36,7 +50,13 @@ class DataGrid extends Component {
     }
 
     
-    
+  function undo() {
+      this.api.undoCellEditing();
+  }
+  
+  function redo() {
+      this.api.redoCellEditing();
+  }  
   
   }
 
