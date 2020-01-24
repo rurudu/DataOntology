@@ -2,11 +2,13 @@ import React from 'react';
 import theme from './Theme'
 import "./App.css";
 import { ThemeProvider } from '@material-ui/core/styles';
-//import Table from './components/MaterialTable';
+//import TopBar from './components/TopBar';
 
 //import Table from './components/DataGridOld';
 import DataGrid from './components/DataGrid';
 import Ribbon from './components/Ribbon';
+import { doc } from 'prettier';
+import { Grid } from 'ag-grid-community';
 
 /*
 > TODO <
@@ -36,21 +38,24 @@ import Ribbon from './components/Ribbon';
 
 export default function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <ThemeProvider theme={theme}>
-        <div class="grid">
+        <div class="grid" id="grd">
           <div class="Ribbon">
             <Ribbon />
           </div>
           <div>TEMP 2</div>
-          <div class="Workspace">
+          <div class="Workspace" id="ws">
+            {/* <body bgcolor="#E6E6FA"> */}
             <DataGrid />
           </div>
           <div>TEMP 4</div>
         </div>
       </ThemeProvider>
     </div>
-    )
+    
+    
+    );
   }
   
   // class App extends Component {
