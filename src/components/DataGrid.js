@@ -53,16 +53,22 @@ class DataGrid extends Component {
       }
     }
 
-    
-  function undo() {
-      this.api.undoCellEditing();
+  }  
+
+  onGridReady = params => {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+  };
+
+  undo() {
+    this.gridApi.undoCellEditing();
   }
   
-  function redo() {
-      this.api.redoCellEditing();
+   redo() {
+    this.gridApi.redoCellEditing();
   }  
   
-  }
+  
 
   
   render() {
@@ -77,9 +83,18 @@ class DataGrid extends Component {
         <AgGridReact
           columnDefs={this.state.columnDefs}
           rowData={this.state.rowData}
+          enableRangeSelection={true}
+          enableFillHandle={true}
+          undoRedoCellEditing={true}
+          undoRedoCellEditingLimit={this.state.undoRedoCellEditingLimit}
+          enableCellChangeFlash={true}
+          onGridReady={this.onGridReady}
           rowSelection={this.state.rowSelection}>
+            
         </AgGridReact>
-      </div>
+        <button onClick={this.undo.bind(this)}>Undo</button>
+        <button onClick={this.redo.bind(this)}>Redo</button>
+      </div> 
     );
   }
 
