@@ -6,7 +6,7 @@ class Ribbon extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-
+			gridColumn: 1 / -1
 		}
 	}
 	

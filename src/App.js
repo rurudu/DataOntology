@@ -45,11 +45,12 @@ export default function App() {
           <div class="Ribbon">
             <Ribbon />
           </div>
-          {/* <div>TEMP 2</div> */}
           <div class="Workspace">
             <DataGrid />
           </div>
-          <ForceGraph/>
+          <div class="graph">
+            <ForceGraph/>
+          </div>
         </div>
       </ThemeProvider>
     </div>
