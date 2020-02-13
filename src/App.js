@@ -36,6 +36,8 @@ import Ribbon from './components/Ribbon';
       - WorkspaceRow
 */
 
+
+
 export default function App() {
   
   return (
@@ -45,7 +47,7 @@ export default function App() {
           <div class="Ribbon">
             <Ribbon />
           </div>
-          <div>TEMP 2</div>
+          <div></div>
           <div class="Workspace">
             <DataGrid />
           </div>

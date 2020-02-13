@@ -12,7 +12,7 @@ class Ribbon extends Component {
 	render() {
 		return (
 			<div>
-				<button class="Button btn">Merge Labels</button>
+				<button class="Button btn">Auto-Merge Selected Labels</button>
 				<button class="Button btn"> New Label</button>
 			</div>
 		);
