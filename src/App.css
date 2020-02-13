@@ -35,6 +35,12 @@
 
 .Workspace {
   border: none;
+  grid-row: 2 / -1;
+  grid-column: 1 / 2;
   min-width: 100%;
   min-height: 80px;
+}
+
+.graph {
+  grid-row: 2 / -1;
 }

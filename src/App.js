@@ -47,11 +47,12 @@ export default function App() {
           <div class="Ribbon">
             <Ribbon />
           </div>
-          <div></div>
           <div class="Workspace">
             <DataGrid />
           </div>
-          <ForceGraph/>
+          <div class="graph">
+            <ForceGraph/>
+          </div>
         </div>
       </ThemeProvider>
     </div>
