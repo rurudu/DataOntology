@@ -1,9 +1,9 @@
 const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-const Menu = electron.Menu
-const fs = electron.fs 
-
+const Menu = electron.Menu;
+// const fs = electron.fs ;
+const fs = require('fs');
 const path = require("path");
 const isDev = require("electron-is-dev");
 
@@ -66,7 +66,16 @@ const template = [
         label: 'Save'
       },
       {
-        label: 'Save As...'
+        label: 'Save As...',
+        click: () => {
+          const {dialog} = require('electron')
+          dialog.showSaveDialog(function (filePath,dialog) {
+            if (filePath === undefined) {
+                return;
+            }
+            exportCSVFile(filePath);
+         });
+       }
       },
       {
         type: 'separator'
@@ -174,3 +183,58 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+
+
+// function createNewExcelFile(filePath)
+// {
+//     var Excel = require('exceljs');
+//     // A new Excel Work Book
+//     var workbook = new Excel.Workbook();
+//     // Create a sheet
+//     var sheet = workbook.addWorksheet('Sheet1');
+//     // A table header
+//     sheet.columns = [
+//         { header: 'Id', key: 'id' },
+//         { header: 'Course', key: 'course' },
+//     ]
+
+//     // Add rows in the above header
+//     sheet.addRow({id: 1, course: 'HTML' });
+//     sheet.addRow({id: 2, course: 'Java Script'});
+//     sheet.addRow({id: 3, course: 'Electron JS'});
+//     sheet.addRow({id: 4, course: 'Node JS'});
+
+//     // Save Excel on Hard Disk
+//     workbook.xlsx.writeFile(filePath)
+//     .then(function() {
+//         // Success Message
+//         alert("File Saved");
+//     });
+// }
+
+function exportCSVFile(filePath){
+  const {dialog} = require('electron')
+  const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+  const csvWriter = createCsvWriter({
+      path: filePath,
+      header: [
+          {id: 'onto_label', title: 'Ontology Label'},
+          {id: 'file_label', title: 'File Label'}
+      ]
+  });
+   
+  const records = [
+      {onto_label: 'Bob',  file_label: 'French, English'},
+      {onto_label: 'Mary', file_label: 'English'}
+  ];
+   
+  csvWriter.writeRecords(records)       
+    .then(() => {
+      dialog.showMessageBox({
+        message: 'The file has been saved!',
+        buttons: ['OK']
+      });
+  });
+}
+
