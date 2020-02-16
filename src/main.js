@@ -73,7 +73,7 @@ const template = [
       },
       {
         label: 'Open Recent',
-        accelerator: 'Ctrl+O'
+        accelerator: 'Ctrl+R'
       },
       {
         type: 'separator'
