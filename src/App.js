@@ -6,7 +6,6 @@ import DataGrid from './components/DataGrid';
 import ForceGraph from './components/ForceGraph';
 import Ribbon from './components/Ribbon';
 
-<<<<<<< HEAD
 
 /*
 > TODO <
@@ -34,14 +33,12 @@ import Ribbon from './components/Ribbon';
       - WorkspaceRow
 */
 
-=======
 class App extends Component {
   constructor(props) {
     super(props)
     window.app = this
     this.dataGridElement = React.createRef();
   }
->>>>>>> 3bd07ca498ca70e5e939f7fe219ea535d66dcfe2
 
   getDataGrid() {
     return this.dataGridElement.current
