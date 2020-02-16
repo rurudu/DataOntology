@@ -52,7 +52,11 @@ const template = [
                   .fromFile(file.toString().replace("\\", "\\\\"))
                   .then(function(csvRow) {
                      rowData = []
-                     csvRow.forEach(e => rowData.push({ont_label:e[0], file_label:e[1]}))
+                     if (csvRow[1].length == 1) {
+                        csvRow.forEach(e => rowData.push({ont_label:"null", file_label:e[0]}))
+                     } else {
+                        csvRow.forEach(e => rowData.push({ont_label:e[0], file_label:e[1]}))
+                     }
                      // send the file data to Init.js
                      mainWindow.webContents.send('csvData', rowData)
                   })
