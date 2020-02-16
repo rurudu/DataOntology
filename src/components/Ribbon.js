@@ -14,7 +14,9 @@ class Ribbon extends Component {
 		return (
 			<div>
 				<button class="Button btn">Auto-Merge Selected Labels</button>
-				<button class="Button btn"> New Label</button>
+				<button class="Button btn">New Label</button>
+				{//<button class="Button btn" onClick={this.undo.bind(this)}>Open File Temp</button>
+				}
 				{/* <button onClick={this.undo(this)}>Undo</button>
             	<button onClick={this.redo(this)}>Redo</button> */}
 			</div>

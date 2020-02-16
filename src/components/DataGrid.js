@@ -64,13 +64,14 @@ class DataGrid extends Component {
     this.gridApi.undoCellEditing();
   }
   
-   redo() {
+  redo() {
     this.gridApi.redoCellEditing();
   }  
   
-  
+  setRowData(rows) {
+    this.gridApi.setRowData(rows)
+  }
 
-  
   render() {
     
     return (

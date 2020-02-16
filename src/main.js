@@ -3,9 +3,11 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu
 const fs = electron.fs 
+const csv = require("csvtojson")
 
 const path = require("path");
 const isDev = require("electron-is-dev");
+const {ipcMain} = require('electron');
 
 let mainWindow;
 
@@ -22,6 +24,11 @@ function createWindow() {
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
   mainWindow.on("closed", () => (mainWindow = null));
+}
+
+// sends the argument (file path?) to Init.js
+function sendFiles(files) {
+   mainWindow.webContents.send('files', files)
 }
 
 const template = [
@@ -43,9 +50,18 @@ const template = [
           const {dialog} = require('electron')
           dialog.showOpenDialog({
               properties: ['openFile', 'multiSelections']
-            }, function (files) {
-              if (files !== undefined) {
-                  // handle files
+            }, function (file) {
+              if (file !== undefined) {
+                  // handle file
+
+                  // right now I'm trying to process the file into a csv string and then send it but it's not working...
+                  var data = csv({noheader:true, output:"csv"})
+                  .fromFile(file)
+                  .then((csvRow)=>{
+                     //csvRow.forEach(e => this.state.rowData.push({ont_label:e[0], file_label:e[1]}))
+                     sendFiles(csvRow)
+                  })
+                  //sendFiles(data)
               }
           });
         }
