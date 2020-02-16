@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// ribbon is "not used" but it's necessary for out button UI(?)
+// ribbon is "not used" but it's necessary for our button UI(?)
 import ribbon from './Ribbon.css';
 
 class Ribbon extends Component {
