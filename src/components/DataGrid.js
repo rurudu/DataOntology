@@ -5,21 +5,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
 
-const rawRowData = [
-  { ont_label: 'null', file_label: 'p_alt' },
-  { ont_label: 'null', file_label: 'air_pressure' },
-  { ont_label: 'null', file_label: 'av_spd' },
-  { ont_label: 'null', file_label: 'tp_spd' },
-  { ont_label: 'null', file_label: 'heading' },
-  { ont_label: 'null', file_label: 'v_acc' },
-  { ont_label: 'null', file_label: 'pitch' },
-  { ont_label: 'null', file_label: 'temperature' },
-  { ont_label: 'null', file_label: 'grav_frce' },
-  { ont_label: 'null', file_label: 'pressure' },
-  { ont_label: 'null', file_label: 'hr' },
-  { ont_label: 'null', file_label: 'min' },
-  { ont_label: 'null', file_label: 'sec' }
-];
+const rawRowData = []
 
 class DataGrid extends Component {
   constructor(props) {

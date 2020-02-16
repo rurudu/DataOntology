@@ -57,7 +57,8 @@ const template = [
                   })
               }
           });
-        }
+        },
+        accelerator: "Ctrl+O"
       },
       {
         label: 'Open Folder...'
