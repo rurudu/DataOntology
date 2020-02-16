@@ -1,13 +1,11 @@
 const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-const Menu = electron.Menu
-const fs = electron.fs 
-const csv = require("csvtojson")
-
+const Menu = electron.Menu;
+const csv = require("csvtojson");
 const path = require("path");
 const isDev = require("electron-is-dev");
-const {ipcMain} = require('electron');
+const fs = require('fs');
 
 let mainWindow;
 
@@ -81,7 +79,16 @@ const template = [
         label: 'Save'
       },
       {
-        label: 'Save As...'
+        label: 'Save As...',
+        click: () => {
+         const {dialog} = require('electron')
+         dialog.showSaveDialog(function (filePath,dialog) {
+           if (filePath === undefined) {
+               return;
+           }
+           exportCSVFile(filePath);
+         });
+        }
       },
       {
         type: 'separator'
@@ -189,3 +196,27 @@ app.on("activate", () => {
     createWindow();
   }
 });
+function exportCSVFile(filePath){
+   const {dialog} = require('electron')
+   const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+   const csvWriter = createCsvWriter({
+       path: filePath,
+       header: [
+           {id: 'onto_label', title: 'Ontology Label'},
+           {id: 'file_label', title: 'File Label'}
+       ]
+   });
+
+   const records = [
+       {onto_label: 'Bob',  file_label: 'French, English'},
+       {onto_label: 'Mary', file_label: 'English'}
+   ];
+
+   csvWriter.writeRecords(records)       
+     .then(() => {
+       dialog.showMessageBox({
+         message: 'The file has been saved!',
+         buttons: ['OK']
+       });
+   });
+ }
