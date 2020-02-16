@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import theme from './Theme'
 import "./App.css";
 import { ThemeProvider } from '@material-ui/core/styles';
-//import TopBar from './components/TopBar';
-
-
-//import Table from './components/DataGridOld';
 import DataGrid from './components/DataGrid';
 import ForceGraph from './components/ForceGraph';
 import Ribbon from './components/Ribbon';
 
+<<<<<<< HEAD
 
 /*
 > TODO <
@@ -37,39 +34,40 @@ import Ribbon from './components/Ribbon';
       - WorkspaceRow
 */
 
+=======
+class App extends Component {
+  constructor(props) {
+    super(props)
+    window.app = this
+    this.dataGridElement = React.createRef();
+  }
+>>>>>>> 3bd07ca498ca70e5e939f7fe219ea535d66dcfe2
 
+  getDataGrid() {
+    return this.dataGridElement.current
+  }
 
-export default function App() {
-  
-  return (
-    <div className="App" >
-      <ThemeProvider theme={theme}>
-        <div class="grid">
-          <div class="Ribbon">
-            <Ribbon />
-          </div>
-          <div class="Workspace">
-            <DataGrid />
-          </div>
-          <div class="graph">
-            <ForceGraph/>
-          </div>
-        </div>
-      </ThemeProvider>
-    </div>
+  render() {
 
+    return (
+      <div className="App" >
+        <ThemeProvider theme={theme}>
+          <div class="grid">
+            <div class="Ribbon">
+              <Ribbon />
+            </div>
+            <div class="Workspace">
+              <DataGrid ref={this.dataGridElement} />
+            </div>
+            <div class="graph">
+              <ForceGraph/>
+            </div>
+          </div>
+        </ThemeProvider>
+      </div>
     );
   }
-  
-  // class App extends Component {
-  //   render() {
-  //     return (
-  //       <div className="App">
-  //         <TopBar />
-  //       </div>
-  //     )
-  //   }
-  // }
-  
-  // export default App;
+}
+
+export default App
   

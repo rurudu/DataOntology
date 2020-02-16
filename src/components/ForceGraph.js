@@ -14,7 +14,7 @@ class ForceGraph2D extends Component {
     return (
       <div>
         <ReactForceGraph2D
-          graphData={genRandomTree(13)}
+          graphData={genRandomTree(548)}
           width={600}
           height={500}
           linkColor={link => 'gray'}

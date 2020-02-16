@@ -28,9 +28,9 @@ class DataGrid extends Component {
       rowSelection: 'multiple',
       columnDefs: [
         { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true, 
-          checkboxSelection: true, headerCheckboxSelection: true, cellEditor: "agSelectCellEditor", cellEditorParams: {
-            values: ['null', 'altitude', 'pressure', 'velocity', 'average speed']
-          }
+          checkboxSelection: true, headerCheckboxSelection: true, /*cellEditor: "agSelectCellEditor", cellEditorParams: {
+            values: ['null', 'altitude', 'pressure', 'velocity', 'average speed'] }*/
+            cellEditor: "agTextCellEditor"
         },
         { headerName: "File Label", field: "file_label", sortable: true, filter: true }
       ],
@@ -48,6 +48,9 @@ class DataGrid extends Component {
 
       // enables flashing to help see cell changes
       enableCellChangeFlash: true,
+
+
+
       rowData: rawRowData,
       style: {
         width: '100%',
@@ -66,13 +69,14 @@ class DataGrid extends Component {
     this.gridApi.undoCellEditing();
   }
   
-   redo() {
+  redo() {
     this.gridApi.redoCellEditing();
   }  
   
-  
+  setRowData(rows) {
+    this.gridApi.setRowData(rows)
+  }
 
-  
   render() {
     
     return (
@@ -94,8 +98,6 @@ class DataGrid extends Component {
           rowSelection={this.state.rowSelection}>
             
         </AgGridReact>
-        <button onClick={this.undo.bind(this)}>Undo</button>
-        <button onClick={this.redo.bind(this)}>Redo</button>
       </div> 
     );
   }
