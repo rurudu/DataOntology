@@ -72,13 +72,15 @@ const template = [
         label: 'Open Workspace...'
       },
       {
-        label: 'Open Recent'
+        label: 'Open Recent',
+        accelerator: 'Ctrl+O'
       },
       {
         type: 'separator'
       },
       {
-        label: 'Save'
+        label: 'Save',
+        accelerator: 'Ctrl+S'
       },
       {
         label: 'Save As...',
@@ -90,7 +92,8 @@ const template = [
            }
            exportCSVFile(filePath);
          });
-        }
+        },
+        accelerator: 'Ctrl+Shift+S'
       },
       {
         type: 'separator'
@@ -116,7 +119,7 @@ const template = [
             accelerator: "Ctrl+Z"
         },
         {
-            label: 'redo',
+            label: 'Redo',
             click: () => {
                mainWindow.webContents.send('redo')
             },
