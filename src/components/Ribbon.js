@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+// ribbon is "not used" but it's necessary for out button UI(?)
 import ribbon from './Ribbon.css';
-import DataGrid from './DataGrid';
 
 class Ribbon extends Component {
 	constructor(props) {
