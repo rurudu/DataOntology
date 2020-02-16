@@ -21,6 +21,12 @@ export default function Init() {
           ipc.on('csvData', (event, args) => {
             window.app.getDataGrid().setRowData(args)
           });
+          ipc.on('undo', (event, args) => {
+            window.app.getDataGrid().undo()
+          });
+          ipc.on('redo', (event, args) => {
+            window.app.getDataGrid().redo()
+          });
     }
     
     return (

@@ -26,10 +26,6 @@ function createWindow() {
   mainWindow.on("closed", () => (mainWindow = null));
 }
 
-// sends the file data to Init.js
-function sendFileData(data) {
-   mainWindow.webContents.send('csvData', data)
-}
 
 const template = [
   {
@@ -59,7 +55,8 @@ const template = [
                   .then(function(csvRow) {
                      rowData = []
                      csvRow.forEach(e => rowData.push({ont_label:e[0], file_label:e[1]}))
-                     sendFileData(rowData)
+                     // send the file data to Init.js
+                     mainWindow.webContents.send('csvData', rowData)
                   })
               }
           });
@@ -100,10 +97,18 @@ const template = [
      label: 'Edit',
      submenu: [
         {
-           role: 'undo'
+            label: 'Undo',
+            click: () => {
+               mainWindow.webContents.send('undo')
+            },
+            accelerator: "Ctrl+Z"
         },
         {
-           role: 'redo'
+            label: 'redo',
+            click: () => {
+               mainWindow.webContents.send('redo')
+            },
+            accelerator: "Ctrl+Shift+Z"
         },
         {
            type: 'separator'
