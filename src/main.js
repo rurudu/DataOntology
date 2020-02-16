@@ -5,7 +5,6 @@ const Menu = electron.Menu;
 const csv = require("csvtojson");
 const path = require("path");
 const isDev = require("electron-is-dev");
-const fs = require('fs');
 
 let mainWindow;
 
