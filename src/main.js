@@ -52,13 +52,18 @@ const template = [
                   .fromFile(file.toString().replace("\\", "\\\\"))
                   .then(function(csvRow) {
                      rowData = []
-                     csvRow.forEach(e => rowData.push({ont_label:e[0], file_label:e[1]}))
+                     if (csvRow[0].length == 1) {
+                        csvRow.forEach(e => rowData.push({ont_label:"null", file_label:e[0]}))
+                     } else {
+                        csvRow.forEach(e => rowData.push({ont_label:e[0], file_label:e[1]}))
+                     }
                      // send the file data to Init.js
                      mainWindow.webContents.send('csvData', rowData)
                   })
               }
           });
-        }
+        },
+        accelerator: "Ctrl+O"
       },
       {
         label: 'Open Folder...'
@@ -67,13 +72,15 @@ const template = [
         label: 'Open Workspace...'
       },
       {
-        label: 'Open Recent'
+        label: 'Open Recent',
+        accelerator: 'Ctrl+R'
       },
       {
         type: 'separator'
       },
       {
-        label: 'Save'
+        label: 'Save',
+        accelerator: 'Ctrl+S'
       },
       {
         label: 'Save As...',
@@ -85,7 +92,8 @@ const template = [
            }
            exportCSVFile(filePath);
          });
-        }
+        },
+        accelerator: 'Ctrl+Shift+S'
       },
       {
         type: 'separator'
@@ -111,7 +119,7 @@ const template = [
             accelerator: "Ctrl+Z"
         },
         {
-            label: 'redo',
+            label: 'Redo',
             click: () => {
                mainWindow.webContents.send('redo')
             },
