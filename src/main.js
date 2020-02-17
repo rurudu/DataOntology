@@ -86,11 +86,13 @@ const template = [
         label: 'Save As...',
         click: () => {
          const {dialog} = require('electron')
-         dialog.showSaveDialog(function (filePath,dialog) {
-           if (filePath === undefined) {
-               return;
-           }
-           exportCSVFile(filePath);
+         dialog.showSaveDialog({
+            filters: [ { name: 'CSV', extensions: ['csv'] } ]
+         }, function (filePath,dialog) {
+            if (filePath === undefined) {
+               return
+            }
+            exportCSVFile(filePath);
          });
         },
         accelerator: 'Ctrl+Shift+S'
