@@ -13,12 +13,12 @@ class DataGrid extends Component {
     this.state = {
       rowSelection: 'multiple',
       columnDefs: [
-        { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, editable: true, 
+        { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, resizable: true, editable: true, 
           checkboxSelection: true, headerCheckboxSelection: true, /*cellEditor: "agSelectCellEditor", cellEditorParams: {
             values: ['null', 'altitude', 'pressure', 'velocity', 'average speed'] }*/
             cellEditor: "agTextCellEditor"
         },
-        { headerName: "File Label", field: "file_label", sortable: true, filter: true }
+        { headerName: "File Label", field: "file_label", sortable: true, filter: true, resizable: true }
       ],
       // allows copy / paste using cell ranges
       enableRangeSelection: true,
