@@ -15,7 +15,7 @@ function sleep (time) {
 export default function Init() {
     // receiving file data from main.js
     const ipc = window.require('electron').ipcRenderer;
-    ipc.on('csvData', (event, args) => {
+    ipc.on('setData', (event, args) => {
       var app = React.createElement(App)
       ReactDOM.render(
         app,
@@ -35,7 +35,14 @@ export default function Init() {
     ipc.on('redo', (event, args) => {
       window.app.getDataGrid().redo()
     });
-    
+
+    ipc.on('getData', (event, args) => {
+      var data = window.app.getDataGrid().getRowData();
+      ipc.send('getData-reply', data)
+      event.returnValue = true
+    });
+
+
     return (
       <div className="Init" >
         <ThemeProvider theme={theme}>

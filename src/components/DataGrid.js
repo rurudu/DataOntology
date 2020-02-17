@@ -5,21 +5,8 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
 
-const rawRowData = [
-  { ont_label: 'null', file_label: 'p_alt' },
-  { ont_label: 'null', file_label: 'air_pressure' },
-  { ont_label: 'null', file_label: 'av_spd' },
-  { ont_label: 'null', file_label: 'tp_spd' },
-  { ont_label: 'null', file_label: 'heading' },
-  { ont_label: 'null', file_label: 'v_acc' },
-  { ont_label: 'null', file_label: 'pitch' },
-  { ont_label: 'null', file_label: 'temperature' },
-  { ont_label: 'null', file_label: 'grav_frce' },
-  { ont_label: 'null', file_label: 'pressure' },
-  { ont_label: 'null', file_label: 'hr' },
-  { ont_label: 'null', file_label: 'min' },
-  { ont_label: 'null', file_label: 'sec' }
-];
+
+
 
 class DataGrid extends Component {
   constructor(props) {
@@ -48,10 +35,6 @@ class DataGrid extends Component {
 
       // enables flashing to help see cell changes
       enableCellChangeFlash: true,
-
-
-
-      rowData: rawRowData,
       style: {
         width: '100%',
         height: '100%'
@@ -62,7 +45,7 @@ class DataGrid extends Component {
 
   onGridReady = params => {
     this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
+    this.gridColumnApi = params.columnApi;     
   };
 
   undo() {
@@ -77,10 +60,16 @@ class DataGrid extends Component {
     this.gridApi.setRowData(rows)
   }
 
+  getRowData(){
+    let rowData = []
+    this.gridApi.forEachNode(node => rowData.push(node.data))
+    return rowData
+  }
+
   render() {
-    
+   
     return (
-      <div id="g"
+      <div id="grid"
         className="ag-theme-balham-dark"
         style={{
           height: '100%',
@@ -101,14 +90,6 @@ class DataGrid extends Component {
       </div> 
     );
   }
-
-//  setHeight() {
-//     document.getElementById("g").style.height='100%'   
-//  }
-
- getRowData () {
-   return rawRowData;
- }
 
 }
 

@@ -5,7 +5,7 @@ const Menu = electron.Menu;
 const csv = require("csvtojson");
 const path = require("path");
 const isDev = require("electron-is-dev");
-const fs = require('fs');
+const ipc = require('electron').ipcMain;
 
 let mainWindow;
 
@@ -58,7 +58,7 @@ const template = [
                         csvRow.forEach(e => rowData.push({ont_label:e[0], file_label:e[1]}))
                      }
                      // send the file data to Init.js
-                     mainWindow.webContents.send('csvData', rowData)
+                     mainWindow.webContents.send('setData', rowData)
                   })
               }
           });
@@ -211,6 +211,33 @@ app.on("activate", () => {
 });
 
 
+// exports the current workspace state to a CSV file
+function exportCSVFile(filePath){
+   mainWindow.webContents.send('getData','');
+
+   ipc.on('getData-reply', (event, args) => {
+      writeCSV(args, filePath)
+   })
+}
+
+// writes data to filepath as a CSV file
+function writeCSV(data, filePath) {
+   const {dialog} = require('electron')
+   const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+   const csvWriter = createCsvWriter({
+      path: filePath,
+      header: ['ont_label', 'file_label']
+   });
+
+   csvWriter.writeRecords(data)
+   .then(() => {
+      dialog.showMessageBox({
+         message: 'The file has been saved!',
+         buttons: ['OK']
+      });
+   })
+   .catch();
+}
 
 // function createNewExcelFile(filePath)
 // {
@@ -238,29 +265,3 @@ app.on("activate", () => {
 //         alert("File Saved");
 //     });
 // }
-
-function exportCSVFile(filePath){
-  const {dialog} = require('electron')
-  const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-  const csvWriter = createCsvWriter({
-      path: filePath,
-      header: [
-          {id: 'onto_label', title: 'Ontology Label'},
-          {id: 'file_label', title: 'File Label'}
-      ]
-  });
-   
-  const records = [
-      {onto_label: 'Bob',  file_label: 'French, English'},
-      {onto_label: 'Mary', file_label: 'English'}
-  ];
-   
-  csvWriter.writeRecords(records)       
-    .then(() => {
-      dialog.showMessageBox({
-        message: 'The file has been saved!',
-        buttons: ['OK']
-      });
-  });
-}
-
