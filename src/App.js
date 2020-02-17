@@ -6,6 +6,33 @@ import DataGrid from './components/DataGrid';
 import ForceGraph from './components/ForceGraph';
 import Ribbon from './components/Ribbon';
 
+
+/*
+> TODO <
+  - Design and implement all components
+    - Merge Bar
+    - Merge Button
+    - Auto-Merge Button
+    - Search Bar
+    - The workspace
+    - Colum label fields
+    - Label fields
+    - Pop-ups
+    - Merge Comfirmation
+  - File loading capability
+  - File parsed and displayed for each column under the corresponding column
+  - Merge capability
+  - Pop-up displayed, inputs work
+*/
+
+/*
+> HIERARCHY <
+  - App
+    - TopBar
+    - Workspace
+      - WorkspaceRow
+*/
+
 class App extends Component {
   constructor(props) {
     super(props)
