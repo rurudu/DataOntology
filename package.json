@@ -22,6 +22,8 @@
     "react-force-graph-2d": "^1.13.7",
     "react-modal": "^3.11.1",
     "react-select-material-ui": "^6.2.0",
+    "react-split-pane": "^0.1.89",
+    "styled-components": "^5.0.1",
     "update-electron-app": "^1.2.0"
   },
   "devDependencies": {

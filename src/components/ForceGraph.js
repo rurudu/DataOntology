@@ -6,7 +6,7 @@ class ForceGraph2D extends Component {
   constructor(props) {
 		super(props);
 		this.state = {
-			gridRow: 2 / -1
+			//gridRow: 2 / -1
 		}
 	}
 
@@ -15,8 +15,8 @@ class ForceGraph2D extends Component {
       <div>
         <ReactForceGraph2D
           graphData={genRandomTree(548)}
-          width={600}
-          height={500}
+          //width={600}
+          //height={500}
           linkColor={link => 'gray'}
           linkCurvature={0.275}
         />

@@ -3,9 +3,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './Theme'
 import App from './App';
 import ReactDOM, { render } from 'react-dom';
-import csv from 'csvtojson';
-import FileReader from 'filereader'
-import Papa from 'papaparse'
 
 // sleep time expects milliseconds
 function sleep (time) {
@@ -46,10 +43,13 @@ export default function Init() {
     return (
       <div className="Init" >
         <ThemeProvider theme={theme}>
-        <div id="commands" aligned = 'center' ><font color="gray"><br /><br />Open File:   Ctrl + O<br />Open Recent:    Ctrl + R</font></div>
-  
-      </ThemeProvider>
+          <div id="commands" aligned = 'center' >
+            <font color="gray">
+              <br /><br />Open File:   Ctrl + O
+              <br />Open Recent:    Ctrl + R
+            </font>
+          </div>
+        </ThemeProvider>
       </div>
-  
-      );
-    }
+    );
+  }
