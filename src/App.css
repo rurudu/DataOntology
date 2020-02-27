@@ -21,26 +21,30 @@
   color: #09d3ac;
 }
 
-.grid {
-  display: grid;
-  grid-template-rows: 10vh 90vh;
-  grid-template-columns: 1fr 1fr;
-  background-color: #282c34;
+.wrapper {
+  position: fixed;
+  width: 100%;
   height: 100%;
-  justify-items: start;
-  justify-content: center;
-  min-height: 300px;
-  min-width: 300px;
 }
 
-.Workspace {
-  border: none;
-  grid-row: 2 / -1;
-  grid-column: 1 / 2;
-  min-width: 100%;
-  min-height: 80px;
-}
+  .flex_col {
+    display: flex;
+    flex-direction: column;
+  }
 
-.graph {
-  grid-row: 2 / -1;
-}
+    .workspace {
+    }
+
+      .data-grid {
+        min-width: 419px; /*must equal SplitPane minSize*/
+        height: 100%;
+      }
+
+      .graph {
+        /* height: 100%; */
+      }
+
+    .ribbon {
+      display: flex;
+      justify-content: left;
+    }

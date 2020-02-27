@@ -3,9 +3,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './Theme'
 import App from './App';
 import ReactDOM, { render } from 'react-dom';
-import csv from 'csvtojson';
-import FileReader from 'filereader'
-import Papa from 'papaparse'
 
 // sleep time expects milliseconds
 function sleep (time) {
@@ -15,7 +12,7 @@ function sleep (time) {
 export default function Init() {
     // receiving file data from main.js
     const ipc = window.require('electron').ipcRenderer;
-    ipc.on('csvData', (event, args) => {
+    ipc.on('setData', (event, args) => {
       var app = React.createElement(App)
       ReactDOM.render(
         app,
@@ -35,14 +32,24 @@ export default function Init() {
     ipc.on('redo', (event, args) => {
       window.app.getDataGrid().redo()
     });
-    
+
+    ipc.on('getData', (event, args) => {
+      var data = window.app.getDataGrid().getRowData();
+      ipc.send('getData-reply', data)
+      event.returnValue = true
+    });
+
+
     return (
       <div className="Init" >
         <ThemeProvider theme={theme}>
-        <div id="commands" aligned = 'center' ><font color="gray"><br /><br />Open File:   Ctrl + O<br />Open Recent:    Ctrl + R</font></div>
-  
-      </ThemeProvider>
+          <div id="commands" aligned = 'center' >
+            <font color="gray">
+              <br /><br />Open File:   Ctrl + O
+              <br />Open Recent:    Ctrl + R
+            </font>
+          </div>
+        </ThemeProvider>
       </div>
-  
-      );
-    }
+    );
+  }
