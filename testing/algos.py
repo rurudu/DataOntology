@@ -2,7 +2,7 @@ import time
 import bisect
 
 # Comment
-def runAlgo(algorithm, data):
+def findSimilarities(algorithm, data):
     inFirst, inTopThree, inTopTen = 0, 0, 0
     startTime = time.time()
 
@@ -11,7 +11,7 @@ def runAlgo(algorithm, data):
         fileLabel = data[r][1]
 
         for i in range(len(data)):
-            bisect.insort(algoData, [algorithm(str(fileLabel), str(data[i][0])), str(data[i][0])])
+            bisect.insort(algoData, [algorithm(fileLabel, data[i][0]), str(data[i][0])])
 
         print("----------------------------------------------------------------")
         print("row:\t" + str(r+1) + " / " + str(len(data)))
@@ -63,6 +63,30 @@ def damerauLevenshteinDistance(s1, s2):
         d[(i,j)] = min (d[(i,j)], d[i-2,j-2] + cost) # transposition
 
   return d[lenstr1-1,lenstr2-1]
+
+# Description
+# ANALYSIS / RUNNING STATS
+def diceCoefficient(s1, s2):
+    """dice coefficient 2nt/(na + nb)."""
+    a = str(s1.split())
+    b = str(s2.split())
+
+    if not len(a) or not len(b): return 0.0
+    if len(a) == 1:  a=a+u'.'
+    if len(b) == 1:  b=b+u'.'
+    
+    a_bigram_list=[]
+    for i in range(len(a)-1):
+      a_bigram_list.append(a[i:i+2])
+    b_bigram_list=[]
+    for i in range(len(b)-1):
+      b_bigram_list.append(b[i:i+2])
+      
+    a_bigrams = set(a_bigram_list)
+    b_bigrams = set(b_bigram_list)
+    overlap = len(a_bigrams & b_bigrams)
+    dice_coeff = overlap * 2.0/(len(a_bigrams) + len(b_bigrams))
+    return dice_coeff
 
 # Comment
 def removeVowels(s):

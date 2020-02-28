@@ -7,16 +7,20 @@ import algos # Our algorithms file
 # from algos import damerauLevenshteinDistance as levDist
 
 # RUN INSTRUCTIONS:
-# python run_tests.py [file.csv]
+# python run_tests.py [algorithm name] ['file.csv']
 
 def main():
-  filePath = sys.argv[1]
+  filePath = sys.argv[2]
   with open(filePath, newline='') as f:
       reader = csv.reader(f)
       next(reader) # skip 1st line with header info
       data = list(reader)
-
-  timePassed, inFirst, inTopThree, inTopTen = algos.runAlgo(algos.damerauLevenshteinDistance, data)
+  
+  algorithm = str(sys.argv[1])
+  if (algorithm == 'lev'):
+    timePassed, inFirst, inTopThree, inTopTen = algos.findSimilarities(algos.damerauLevenshteinDistance, data)
+  if (algorithm == 'dice'):
+    timePassed, inFirst, inTopThree, inTopTen = algos.findSimilarities(algos.diceCoefficient, data)
 
   printResults(filePath, len(data), timePassed, inFirst, inTopThree, inTopTen)
 
