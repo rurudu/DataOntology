@@ -5,10 +5,6 @@ const Menu = electron.Menu;
 const csv = require("csvtojson");
 const path = require("path");
 const isDev = require("electron-is-dev");
-<<<<<<< HEAD
-=======
-const ipc = require('electron').ipcMain;
->>>>>>> a443b41f5383642258edb11731f9d524e624e06b
 
 let mainWindow;
 
