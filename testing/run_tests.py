@@ -19,8 +19,10 @@ def main():
   algorithm = str(sys.argv[1])
   if (algorithm == 'lev'):
     timePassed, inFirst, inTopThree, inTopTen = algos.findSimilarities(algos.damerauLevenshteinDistance, data)
-  if (algorithm == 'dice'):
+  elif (algorithm == 'dice'):
     timePassed, inFirst, inTopThree, inTopTen = algos.findSimilarities(algos.diceCoefficient, data)
+  elif (algorithm == 'gestalt'):
+    timePassed, inFirst, inTopThree, inTopTen = algos.findSimilarities(algos.real_quick_ratio, data)
 
   printResults(filePath, len(data), timePassed, inFirst, inTopThree, inTopTen)
 

@@ -86,7 +86,7 @@ def diceCoefficient(s1, s2):
     b_bigrams = set(b_bigram_list)
     overlap = len(a_bigrams & b_bigrams)
     dice_coeff = overlap * 2.0/(len(a_bigrams) + len(b_bigrams))
-    return dice_coeff
+    return 1 - dice_coeff
 
 # Comment
 def removeVowels(s):
