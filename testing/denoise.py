@@ -9,6 +9,7 @@ def main():
     filePath = sys.argv[1]
     outPath = './testing/sample_files/DENOISE_TEMP_OUTPUT.csv'
 
+    # If output path specified, write to it
     if len(sys.argv) == 3:
         outPath = sys.argv[2]
 
