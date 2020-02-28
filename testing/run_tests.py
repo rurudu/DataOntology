@@ -21,8 +21,6 @@ def main():
     timePassed, inFirst, inTopThree, inTopTen = algos.findSimilarities(algos.damerauLevenshteinDistance, data)
   elif (algorithm == 'dice'):
     timePassed, inFirst, inTopThree, inTopTen = algos.findSimilarities(algos.diceCoefficient, data)
-  elif (algorithm == 'gestalt'):
-    timePassed, inFirst, inTopThree, inTopTen = algos.findSimilarities(algos.real_quick_ratio, data)
 
   printResults(filePath, len(data), timePassed, inFirst, inTopThree, inTopTen)
 
