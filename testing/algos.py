@@ -68,8 +68,15 @@ def damerauLevenshteinDistance(s1, s2):
 # ANALYSIS / RUNNING STATS
 def diceCoefficient(s1, s2):
     """dice coefficient 2nt/(na + nb)."""
+    s1 = removeVowels(s1)
+    s2 = removeVowels(s2)
     a = str(s1.split())
     b = str(s2.split())
+    cs = s1.split()
+    abrev = ''
+    for c in cs:
+      abrev = abrev + (c[0])
+    ovverlap = len(set(abrev) & set(b))
 
     if not len(a) or not len(b): return 0.0
     if len(a) == 1:  a=a+u'.'
@@ -85,12 +92,31 @@ def diceCoefficient(s1, s2):
     a_bigrams = set(a_bigram_list)
     b_bigrams = set(b_bigram_list)
     overlap = len(a_bigrams & b_bigrams)
-    dice_coeff = overlap * 2.0/(len(a_bigrams) + len(b_bigrams))
+    dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**5.0/(len(abrev))
     return 1 - dice_coeff
+
+def comSub(s1, s2):
+  res = 0
+  s1 = removeVowels(s1)
+  s2 = removeVowels(s2)
+  for i in range(len(s1) + 1): 
+    LCSuff = [[0 for k in range(len(s2)+1)] for l in range(len(s1)+1)]                 
+    for j in range(len(s2) + 1): 
+      if (i == 0 or j == 0): 
+        LCSuff[i][j] = 0
+      elif (s1[i-1] == s2[j-1]): 
+        LCSuff[i][j] = LCSuff[i-1][j-1] + 1
+        #res +=1
+      else: 
+        LCSuff[i][j] = 0
+      res += max(LCSuff[i])
+  return (-res)
 
 # Comment
 def removeVowels(s):
-  for i in range(len(s)):
-    if (s[i] in ['a','e','i','o','u']):
-      s = s.replace(str(i), "")
+  for i in range(len(s)-1, -1, -1):
+    # if (s[i] in ['_', '(', ')', '-', '?', ':', ';', ',', '.', '!', '\\', '"', "'",'a','e','i','o','u']):
+    #   s = s.replace(str(i), "")
+    if (s[i] in ['/']):
+      s = s.replace(str(i), " ")
   return s
