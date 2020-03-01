@@ -88,11 +88,22 @@ def diceCoefficient(s1, s2):
     b_bigram_list=[]
     for i in range(len(b)-1):
       b_bigram_list.append(b[i:i+2])
-      
     a_bigrams = set(a_bigram_list)
     b_bigrams = set(b_bigram_list)
     overlap = len(a_bigrams & b_bigrams)
-    dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**5.0/(len(abrev))
+
+    a_bigram_list2=[]
+    for i in range(len(a)-1):
+      a_bigram_list2.append(a[i:i+3])
+    b_bigram_list2=[]
+    for i in range(len(b)-1):
+      b_bigram_list2.append(b[i:i+3])
+    a_bigrams2 = set(a_bigram_list2)
+    b_bigrams2 = set(b_bigram_list2)
+    overlap2 = len(a_bigrams2 & b_bigrams2)
+
+
+    dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**5.0/(len(abrev)) + overlap2/(len(a_bigrams) + len(b_bigrams))
     return 1 - dice_coeff
 
 def comSub(s1, s2):
