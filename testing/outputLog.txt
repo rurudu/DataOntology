@@ -1,0 +1,43 @@
+DICE
+
+
+    dice_coeff = overlap ** 2.0 /(len(a_bigrams) + len(b_bigrams)) + ovverlap*5.0/(len(abrev))
+correct label in first position:	469 / 1506
+correct label in top three:		669 / 1506
+correct label in top ten:		839 / 1506
+
+
+    dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**4.0/(len(abrev))
+correct label in first position:	471 / 1506
+correct label in top three:		671 / 1506
+correct label in top ten:		841 / 1506
+
+
+    if (s[i] in ['/', '_', '(', ')']):
+      s = s.replace(str(i), " ")
+correct label in first position:	471 / 1506
+correct label in top three:		671 / 1506
+correct label in top ten:		842 / 1506
+
+
+    a_bigram_list2=[]
+    for i in range(len(a)-1):
+      a_bigram_list2.append(a[i:i+3])
+    b_bigram_list2=[]
+    for i in range(len(b)-1):
+      b_bigram_list2.append(b[i:i+3])
+    a_bigrams2 = set(a_bigram_list2)
+    b_bigrams2 = set(b_bigram_list2)
+    overlap2 = len(a_bigrams2 & b_bigrams2)
+    dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**5.0/(len(abrev)) + overlap2 **2.0/(len(a_bigrams) + len(b_bigrams))
+time elapsed:				70.33469915390015 seconds
+correct label in first position:	458 / 1506
+correct label in top three:		673 / 1506
+correct label in top ten:		860 / 1506
+
+
+    dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**5.0/(len(abrev)) + overlap2/(len(a_bigrams) + len(b_bigrams))
+time elapsed:				69.62817192077637 seconds
+correct label in first position:	473 / 1506
+correct label in top three:		675 / 1506
+correct label in top ten:		833 / 1506
