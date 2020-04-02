@@ -68,42 +68,59 @@ def damerauLevenshteinDistance(s1, s2):
 # ANALYSIS / RUNNING STATS
 def diceCoefficient(s1, s2):
     """dice coefficient 2nt/(na + nb)."""
-    s1 = removeVowels(s1)
-    s2 = removeVowels(s2)
+    # s1 = removeVowels(s1)
+    # s2 = removeVowels(s2)
+    # a = str(s1.split())
+    # b = str(s2.split())
+    # cs = s1.split()
+    # abrev = ''
+    # for c in cs:
+    #   abrev = abrev + (c[0])
+    # ovverlap = len(set(abrev) & set(b))
+
+    # if not len(a) or not len(b): return 0.0
+    # if len(a) == 1:  a=a+u'.'
+    # if len(b) == 1:  b=b+u'.'
+    
+    # a_bigram_list=[]
+    # for i in range(len(a)-1):
+    #   a_bigram_list.append(a[i:i+2])
+    # b_bigram_list=[]
+    # for i in range(len(b)-1):
+    #   b_bigram_list.append(b[i:i+2])
+    # a_bigrams = set(a_bigram_list)
+    # b_bigrams = set(b_bigram_list)
+    # overlap = len(a_bigrams & b_bigrams)
+
+    # a_bigram_list2=[]
+    # for i in range(len(a)-1):
+    #   a_bigram_list2.append(a[i:i+3])
+    # b_bigram_list2=[]
+    # for i in range(len(b)-1):
+    #   b_bigram_list2.append(b[i:i+3])
+    # a_bigrams2 = set(a_bigram_list2)
+    # b_bigrams2 = set(b_bigram_list2)
+    # overlap2 = len(a_bigrams2 & b_bigrams2)t
+
+    # dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**5.0/(len(abrev)) + overlap2/(len(a_bigrams) + len(b_bigrams))
     a = str(s1.split())
     b = str(s2.split())
-    cs = s1.split()
-    abrev = ''
-    for c in cs:
-      abrev = abrev + (c[0])
-    ovverlap = len(set(abrev) & set(b))
 
     if not len(a) or not len(b): return 0.0
     if len(a) == 1:  a=a+u'.'
     if len(b) == 1:  b=b+u'.'
-    
+
     a_bigram_list=[]
     for i in range(len(a)-1):
       a_bigram_list.append(a[i:i+2])
     b_bigram_list=[]
     for i in range(len(b)-1):
       b_bigram_list.append(b[i:i+2])
+
     a_bigrams = set(a_bigram_list)
     b_bigrams = set(b_bigram_list)
     overlap = len(a_bigrams & b_bigrams)
-
-    a_bigram_list2=[]
-    for i in range(len(a)-1):
-      a_bigram_list2.append(a[i:i+3])
-    b_bigram_list2=[]
-    for i in range(len(b)-1):
-      b_bigram_list2.append(b[i:i+3])
-    a_bigrams2 = set(a_bigram_list2)
-    b_bigrams2 = set(b_bigram_list2)
-    overlap2 = len(a_bigrams2 & b_bigrams2)
-
-
-    dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**5.0/(len(abrev)) + overlap2/(len(a_bigrams) + len(b_bigrams))
+    dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams))
     return 1 - dice_coeff
 
 def comSub(s1, s2):

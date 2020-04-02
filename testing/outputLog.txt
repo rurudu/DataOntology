@@ -1,7 +1,72 @@
+COMSUB
+
+file:					sample_files/denoised_data.csv
+data size:				1505 rows
+time elapsed:				448.3555417060852 seconds
+
+correct label in first position:	8 / 1505
+correct label in top three:		18 / 1505
+correct label in top ten:		39 / 1505
+
+
+
+
+
+LEVENCHTEIN
+file:					sample_files/denoised_data.csv
+data size:				1505 rows
+time elapsed:				288.9539601802826 seconds
+
+correct label in first position:	124 / 1505
+correct label in top three:		157 / 1505
+correct label in top ten:		224 / 1505
+
+
+
+
+
 DICE
 
+dice_coeff = overlap * 2.0/(len(a_bigrams) + len(b_bigrams))
+file:					sample_files/denoised_data.csv
+data size:				1505 rows
+time elapsed:				34.14075493812561 seconds
+correct label in first position:	389 / 1505
+correct label in top three:		592 / 1505
+correct label in top ten:		790 / 1505
 
-    dice_coeff = overlap ** 2.0 /(len(a_bigrams) + len(b_bigrams)) + ovverlap*5.0/(len(abrev))
+
+
+dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams))
+file:					sample_files/denoised_data.csv
+data size:				1505 rows
+time elapsed:				35.096736907958984 seconds
+correct label in first position:	475 / 1505
+correct label in top three:		679 / 1505
+correct label in top ten:		844 / 1505
+
+
+
+dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**5.0/(len(abrev))
+file:					sample_files/denoised_data.csv
+data size:				1505 rows
+time elapsed:				41.11866474151611 seconds
+correct label in first position:	479 / 1505
+correct label in top three:		666 / 1505
+correct label in top ten:		825 / 1505
+
+
+
+dice_coeff = overlap ** 2.0/(len(a_bigrams) + len(b_bigrams)) + ovverlap**2.0/(len(abrev))
+file:					sample_files/denoised_data.csv
+data size:				1505 rows
+time elapsed:				38.81577491760254 seconds
+correct label in first position:	479 / 1505
+correct label in top three:		666 / 1505
+correct label in top ten:		827 / 1505
+
+
+dice_coeff = overlap ** 2.0 /(len(a_bigrams) + len(b_bigrams)) + ovverlap*5.0/(len(abrev))
 correct label in first position:	469 / 1506
 correct label in top three:		669 / 1506
 correct label in top ten:		839 / 1506
