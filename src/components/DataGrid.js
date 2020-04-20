@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
-//import './App.css';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
-
-
-
 
 class DataGrid extends Component {
   constructor(props) {
@@ -15,11 +10,17 @@ class DataGrid extends Component {
       rowSelection: 'multiple',
       columnDefs: [
         { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, resizable: true, editable: true, 
-          checkboxSelection: true, headerCheckboxSelection: true, /*cellEditor: "agSelectCellEditor", cellEditorParams: {
-            values: ['null', 'altitude', 'pressure', 'velocity', 'average speed'] }*/
-            cellEditor: "agTextCellEditor"
+          checkboxSelection: true, headerCheckboxSelection: true, maxWidth: 350,
+            cellEditor: "agSelectCellEditor",
+            cellEditorParams: function(params) {
+              var file_label = params.data.file_label;
+              var diceResults = getDiceResults(file_label);
+              return {
+                values: diceResults
+              }
+            }
         },
-        { headerName: "File Label", field: "file_label", sortable: true, filter: true, resizable: true }
+        { headerName: "File Label", field: "file_label", sortable: true, filter: true, resizable: true, maxWidth: 250 }
       ],
       // allows copy / paste using cell ranges
       enableRangeSelection: true,
@@ -30,8 +31,8 @@ class DataGrid extends Component {
       // enables undo / redo
       undoRedoCellEditing: true,
 
-      // restricts the number of undo / redo steps to 5
-      undoRedoCellEditingLimit: 5,
+      // restricts the number of undo / redo steps to 10
+      undoRedoCellEditingLimit: 10,
 
       // enables flashing to help see cell changes
       enableCellChangeFlash: true,
@@ -39,6 +40,24 @@ class DataGrid extends Component {
         width: '100%',
         height: '100%'
       }
+    }
+
+    // TODO: GET DICE RESULTS
+    function getDiceResults(file_label) {
+      const spawn = require('child_process').spawn;
+      const scriptExecution = spawn("python.exe", ["testing/algos.py"]);
+      
+      // Handle normal output
+      scriptExecution.stdout.on('data', (data) => {
+        console.log(String.fromCharCode.apply(null, data));
+      });
+
+      var data = JSON.stringify(file_label);
+      scriptExecution.stdin.write(data);
+      // End data writing
+      scriptExecution.stdin.end();
+      
+      return [file_label]
     }
 
   }  
@@ -55,7 +74,7 @@ class DataGrid extends Component {
   redo() {
     this.gridApi.redoCellEditing();
   }  
-  
+
   setRowData(rows) {
     this.gridApi.setRowData(rows)
   }

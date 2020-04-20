@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './Theme'
 import App from './App';
-import ReactDOM, { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 
 // sleep time expects milliseconds
 function sleep (time) {

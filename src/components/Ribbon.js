@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// ribbon is "not used" but it's necessary for our button UI(?)
-import btn from './Ribbon.css';
 import Modal from 'react-modal';
 import './CreateLabel.css';
 
