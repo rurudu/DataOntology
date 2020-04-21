@@ -19,32 +19,39 @@ class Ribbon extends Component {
 		this.state = {
 			// Placement in grid defined in App.css
 			gridColumn: 1 / -1,
-			modalIsOpen: false
+			modalIsOpen: false,
+			modeText: 'Suggestion Mode'
 		}
 
-		this.openModal = this.openModal.bind(this);
-		this.afterOpenModal = this.afterOpenModal.bind(this);
-		this.closeModal = this.closeModal.bind(this);
+		// this.openModal = this.openModal.bind(this);
+		// this.afterOpenModal = this.afterOpenModal.bind(this);
+		// this.closeModal = this.closeModal.bind(this);
+		this.changeText = this.changeText.bind(this);
 	}
 	
-	openModal() {
-		this.setState({modalIsOpen: true});
-	}
+	// openModal() {
+	// 	this.setState({modalIsOpen: true});
+	// }
 
-	afterOpenModal() {
-		// references are now sync'd and can be accessed.
-		this.subtitle.style.color = 'White';
-	}
+	// afterOpenModal() {
+	// 	// references are now sync'd and can be accessed.
+	// 	this.subtitle.style.color = 'White';
+	// }
 	 
-	closeModal() {
-		this.setState({modalIsOpen: false});
+	// closeModal() {
+	// 	this.setState({modalIsOpen: false});
+	// }
+
+	changeText() {
+    	if (this.state.modeText=='Suggestion Mode') this.setState({modeText: 'Edit Mode'});
+    	else this.setState({modeText: 'Suggestion Mode'});
 	}
 
 	render() {
 		return (
 			<div>
 				<button class="Button btn">Auto-Merge Selected Labels</button>
-				<button class="Button btn" onClick={this.openModal}>New Label</button>
+		<button id="modeButton" class="Button btn" onClick={this.changeText}>{this.state.modeText}</button>
 				<Modal
 					isOpen={this.state.modalIsOpen}
 					onAfterOpen={this.afterOpenModal}
