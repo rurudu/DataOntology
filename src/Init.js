@@ -46,7 +46,7 @@ export default function Init() {
           <div id="commands" aligned = 'center' >
             <font color="gray">
               <br /><br />Open File:   Ctrl + O
-              <br />Open Recent:    Ctrl + R
+              {/* <br />Open Recent:    Ctrl + R */}
             </font>
           </div>
         </ThemeProvider>
