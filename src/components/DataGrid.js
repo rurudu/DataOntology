@@ -44,20 +44,11 @@ class DataGrid extends Component {
 
     // TODO: GET DICE RESULTS
     function getDiceResults(file_label) {
-      const spawn = require('child_process').spawn;
-      const scriptExecution = spawn("python.exe", ["testing/algos.py"]);
-      
-      // Handle normal output
-      scriptExecution.stdout.on('data', (data) => {
-        console.log(String.fromCharCode.apply(null, data));
-      });
+      // state.api.forEachNode(function(rowNode, index) {
+      //   console.log('node ' + rowNode.data.file_label + ' is in the grid.');
+      // });
 
-      var data = JSON.stringify(file_label);
-      scriptExecution.stdin.write(data);
-      // End data writing
-      scriptExecution.stdin.end();
-      
-      return [file_label]
+      return ['1st', '2nd', '3rd', '4th', '5th']
     }
 
   }  
