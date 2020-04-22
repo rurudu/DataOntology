@@ -11,14 +11,14 @@ class DataGrid extends Component {
       columnDefs: [
         { headerName: "Ontology Label", field: "ont_label", sortable: true, filter: true, resizable: true, editable: true, 
           checkboxSelection: true, headerCheckboxSelection: true, maxWidth: 350,
-            cellEditor: "agSelectCellEditor",
-            cellEditorParams: function(params) {
-              var file_label = params.data.file_label;
-              var diceResults = getDiceResults(file_label);
-              return {
-                values: diceResults
-              }
-            }
+            // cellEditor: "agSelectCellEditor",
+            // cellEditorParams: function(params) {
+            //   var file_label = params.data.file_label;
+            //   var diceResults = getDiceResults(file_label);
+            //   return {
+            //     values: diceResults
+            //   }
+            // }
         },
         { headerName: "File Label", field: "file_label", sortable: true, filter: true, resizable: true, maxWidth: 250 }
       ],
